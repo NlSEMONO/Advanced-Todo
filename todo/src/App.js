@@ -7,7 +7,7 @@ import { getTasksHelper, deleteTaskHelper, addTaskHelper, closeModalSettings, ed
 
 function StickyNote({handleClick, task, content}) {
   return (
-    <div className='note' onClick={handleClick}> 
+    <div className='note main-border' onClick={handleClick}> 
       <h3> {task} </h3>
       <p> {content} </p>
     </div>
@@ -96,15 +96,15 @@ function App() {
 
   return (
     <>
-      <h1> {`My Tasks`} </h1>
+      <h1> {`My Tasks`} </h1> <br/>
       <div className='main'> 
         {notes}
       </div> <br/>  
       <TaskSettings.Provider value={modalSettings}>
         <Modal/>    
       </TaskSettings.Provider>
-      <button onClick={() => {addTask()}}> Add Task </button>
-      <button onClick={() => {logOut()}}> Log Out</button>
+      <button className='btn main-border main-text secondary-back' onClick={() => {addTask()}}> Add Task </button>
+      <button className='btn main-border main-text secondary-back' onClick={() => {logOut()}}> Log Out</button>
     </>
   );
 }

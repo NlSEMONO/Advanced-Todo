@@ -3,7 +3,7 @@ import {getSS, setSS} from './CookieHelpers.js';
 export function getTasksHelper(updateTasks) {
     let SS = getSS();
     if (SS === '') {
-    //   window.location.href = '/todo/login';
+      window.location.href = '/todo/login';
       return;
     }
     fetch('get-tasks', createPostRequest({'SS': SS})).then(

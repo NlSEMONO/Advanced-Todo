@@ -10,9 +10,9 @@ export const Modal = () => {
 
     const view_objects = [];
     if (editing || settings['adding']) {
-        view_objects.push(<><h2>Task Name: </h2><br/></>);
+        view_objects.push(<><h2><strong> Task Name: </strong></h2></>);
         view_objects.push(<input type='text' onChange={e => setTaskName(e.target.value)} value={taskName}/>);
-        view_objects.push(<><h2>Task Content: </h2><br/></>);
+        view_objects.push(<><h2><strong> Task Content: </strong> </h2></>);
         view_objects.push(<input type='text' onChange={e => setTaskContent(e.target.value)} value={taskContent}/>);
         view_objects.push(
         <div> 
@@ -20,19 +20,21 @@ export const Modal = () => {
                             () => settings['edit_function'](settings['task_name'], settings['task_details'], taskName, taskContent)}> 
                 {settings['adding'] ? 'Add' : 'Save' }
             </button>
-            <button className='btn-small-round contrast-back' onClick={settings['adding'] ? () => settings['close_modal']() :
-            () => settings['delete_function'](settings['task_name'], settings['task_details'])}> {settings['adding'] ? 'Cancel' : 'Delete'} </button> 
+            {!settings['adding'] ? <button className='btn-small-round contrast-back' onClick={
+            () => settings['delete_function'](settings['task_name'], settings['task_details'])}> Delete </button> : null}
+            <button className='btn-small-round contrast-back' onClick={() => settings['close_modal']()}> Cancel </button> 
         </div>);
     }
     else {
-        view_objects.push(<><h2>Task Name: </h2><br/></>);
-        view_objects.push(<> <h1> {settings['task_name']} </h1><br/> </>);
-        view_objects.push(<><h2>Task Content: </h2><br/></>);
+        view_objects.push(<><h2><strong> Task Name: </strong> </h2></>);
+        view_objects.push(<> <h3> {settings['task_name']} </h3> </>);
+        view_objects.push(<><h2><strong> Task Content: </strong> </h2></>);
         view_objects.push(<p> {settings['task_details']} </p>);
         view_objects.push(
         <div> 
             <button className='btn-small-round contrast-back' onClick={() => setEditing(true)}> Edit </button>
-            <button className='btn-small-round contrast-back' onClick={() => settings['delete_function'](settings['task_name'], settings['task_details'])}> Delete </button> 
+            <button className='btmyn-small-round contrast-back' onClick={() => settings['delete_function'](settings['task_name'], settings['task_details'])}> Delete </button> 
+            <button className='btn-small-round contrast-back' onClick={() => settings['close_modal']()}> Cancel </button> 
         </div>);
     }
     

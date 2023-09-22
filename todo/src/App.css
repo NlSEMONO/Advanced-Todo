@@ -46,6 +46,11 @@ p, ul, li {
   z-index: 3;
 }
 
+#modal p {
+  font-family: 'Offside';
+}
+
+
 #navbar {
     position: sticky;
     top: 0px;
@@ -91,6 +96,16 @@ p, ul, li {
   height: 30px;
 }
 
+.btn {
+  font-family: 'Offside';
+  border: 1;
+  border-style:solid;
+  border-radius: 5%;
+  font-size: 14px;
+  width: 90px;
+  height: 45px;
+}
+
 .contrast {
     color: #FFCC86; 
 }
@@ -99,7 +114,7 @@ p, ul, li {
     background-color: #FFCC86; 
 }
 
-.main {
+.main-color {
     color: #A3CDFC;  
 }
 
@@ -177,7 +192,7 @@ p, ul, li {
 }
 
 .note {
-  background-color: #A3CDFC;
+  background-color: #7DB3DF;
   text-align: center;
   height: 144px;
   width: 144px;
@@ -185,8 +200,18 @@ p, ul, li {
   margin-right: 48px;
 }
 
+.note h3, p {
+  color: #C3DEFC;
+}
+
 #root{
   text-align: center;
+}
+
+.main-border {
+  border-color: #A3CDFC;
+  border: 1;
+  border-style: solid;
 }
 
 .main {
