@@ -40,17 +40,23 @@ function App() {
     setModalSettings(closeModalSettings);
   }
 
+  const close_modal = () => {
+    setModalSettings(closeModalSettings);
+  }
+
   function addTask() {
     let settingsToSend = {
       'task_name': '', 
       'task_details': '', 
-      'delete': delete_function, 
+      'delete_function': delete_function, 
+      'close_modal': close_modal,
       'adding': true, 
       'add_function': add_function, 
       'edit_function': edit_function,
       'editing': false,
       'open': true,
     }
+    console.log('herro');
     setModalSettings(settingsToSend);
   }
 
@@ -70,11 +76,12 @@ function App() {
   function handleClick(item) {
     let settingsToSend = {
       'task_name': tasks[item]['task'], 
-      'task_details': tasks[item]['task'], 
+      'task_details': tasks[item]['content'], 
       'adding': false, 
       'add_function': add_function, 
       'edit_function': edit_function,
-      'delete': delete_function, 
+      'delete_function': delete_function, 
+      'close_modal': close_modal,
       'editing': false,
       'open': true,
     }
