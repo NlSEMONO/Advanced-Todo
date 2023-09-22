@@ -194,13 +194,15 @@ p, ul, li {
 .note {
   background-color: #7DB3DF;
   text-align: center;
-  height: 144px;
-  width: 144px;
+  height: 200px;
+  width: 200px;
   margin-left: 48px;
   margin-right: 48px;
+  margin-top: 30px
 }
 
 .note h3, p {
+  font-family: 'Offside';
   color: #C3DEFC;
 }
 

@@ -1,5 +1,5 @@
 import './App.css'
-import {useContext, useState} from 'react';
+import {useContext, useState, useEffect} from 'react';
 import {TaskSettings} from './Context.js';
 
 export const Modal = () => {
@@ -7,6 +7,10 @@ export const Modal = () => {
     const settings = useContext(TaskSettings);
     const [taskName, setTaskName] = useState(settings['task_name']);
     const [taskContent, setTaskContent] = useState(settings['task_details']);
+
+    useEffect(() => {
+        setEditing(settings['editing']);
+    }, [settings]);
 
     const view_objects = [];
     if (editing || settings['adding']) {
@@ -16,8 +20,8 @@ export const Modal = () => {
         view_objects.push(<input type='text' onChange={e => setTaskContent(e.target.value)} value={taskContent}/>);
         view_objects.push(
         <div> 
-            <button className='btn-small-round contrast-back' onClick={settings['adding'] ? () => settings['add_function'](taskName, taskContent) : 
-                            () => settings['edit_function'](settings['task_name'], settings['task_details'], taskName, taskContent)}> 
+            <button className='btn-small-round contrast-back' onClick={settings['adding'] ? () => {settings['add_function'](taskName, taskContent); setTaskContent(''); setTaskName('')}: 
+                            () => {settings['edit_function'](settings['task_name'], settings['task_details'], taskName, taskContent); setTaskContent(''); setTaskName('')}}> 
                 {settings['adding'] ? 'Add' : 'Save' }
             </button>
             {!settings['adding'] ? <button className='btn-small-round contrast-back' onClick={
@@ -33,7 +37,7 @@ export const Modal = () => {
         view_objects.push(
         <div> 
             <button className='btn-small-round contrast-back' onClick={() => setEditing(true)}> Edit </button>
-            <button className='btmyn-small-round contrast-back' onClick={() => settings['delete_function'](settings['task_name'], settings['task_details'])}> Delete </button> 
+            <button className='btn-small-round contrast-back' onClick={() => settings['delete_function'](settings['task_name'], settings['task_details'])}> Delete </button> 
             <button className='btn-small-round contrast-back' onClick={() => settings['close_modal']()}> Cancel </button> 
         </div>);
     }
