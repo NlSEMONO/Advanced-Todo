@@ -3,7 +3,7 @@ export const Navbar = ({dimmed, toggleSidebar}) => {
         <>
             <div id="navbar"> 
                 <div id="navbar-items"> 
-                    <a href=""> <img id="website-logo" src="/static/img/Group.svg"/> </a>
+                    <a href="/"> <img id="website-logo" src="/static/img/Group.svg"/> </a>
                     <div id="navbar-pages"> 
                         <a href="/#projects"> <p> Projects </p> </a>
                         <a href="/#contact"> <p> Contact </p> </a>

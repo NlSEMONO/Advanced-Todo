@@ -9,8 +9,8 @@ import { Navbar } from './Navbar';
 function StickyNote({handleClick, task, content}) {
   return (
     <div className='note main-border' onClick={handleClick}> 
-      <h3> {task} </h3>
-      <p> {content} </p>
+      <h3 style={{wordWrap: "normal"}}> {task} </h3>
+      <p style={{wordWrap: "normal"}}> {content} </p>
     </div>
   );
 }
@@ -23,7 +23,7 @@ function App() {
   const [tasks, setTasks] = useState([]); 
 
   useEffect(() => {
-    // getTasksHelper(updateTasks);
+    getTasksHelper(updateTasks);
   }, [])
 
   const add_function = (taskName, taskContent) => {
@@ -94,10 +94,6 @@ function App() {
     notes.push(
       <StickyNote handleClick={() => handleClick(item)} task={tasks[item]['task']} content={tasks[item]['content']}/>
     );
-  }
-
-  function setDimmedProp() {
-    setDimmed(!dimmed);
   }
 
   return (
