@@ -4,6 +4,7 @@ import {TaskSettings} from './Context.js';
 import {Modal} from './Modal.js';
 import {setSS} from './CookieHelpers.js'
 import { getTasksHelper, deleteTaskHelper, addTaskHelper, closeModalSettings, editTaskHelper } from './Helpers';
+import { Navbar } from './Navbar';
 
 function StickyNote({handleClick, task, content}) {
   return (
@@ -18,10 +19,11 @@ function App() {
   useContext(TaskSettings);
   const notes = [];
   const [modalSettings, setModalSettings] = useState({'open': false});
+  const [dimmed, setDimmed] = useState(false);
   const [tasks, setTasks] = useState([]); 
 
   useEffect(() => {
-    getTasksHelper(updateTasks);
+    // getTasksHelper(updateTasks);
   }, [])
 
   const add_function = (taskName, taskContent) => {
@@ -94,17 +96,24 @@ function App() {
     );
   }
 
+  function setDimmedProp() {
+    setDimmed(!dimmed);
+  }
+
   return (
     <>
-      <h1> {`My Tasks`} </h1> <br/>
-      <div className='main'> 
-        {notes}
-      </div> <br/>  
-      <TaskSettings.Provider value={modalSettings}>
-        <Modal/>    
-      </TaskSettings.Provider>
-      <button className='btn main-border main-text secondary-back' onClick={() => {addTask()}}> Add Task </button>
-      <button className='btn main-border main-text secondary-back' onClick={() => {logOut()}}> Log Out</button>
+      <Navbar dimmed={dimmed} toggleSidebar={() => setDimmed(!dimmed)}/>
+      <div id="main" style={{opacity: dimmed ? '40%' : '100%'}}>
+        <h1> {`My Tasks`} </h1> <br/>
+        <div className='main'> 
+          {notes}
+        </div> <br/>  
+        <TaskSettings.Provider value={modalSettings}>
+          <Modal/>    
+        </TaskSettings.Provider>
+        <button className='btn main-border main-text secondary-back' onClick={() => {addTask()}}> Add Task </button>
+        <button className='btn main-border main-text secondary-back' onClick={() => {logOut()}}> Log Out</button>
+      </div>
     </>
   );
 }
