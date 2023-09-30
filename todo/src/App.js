@@ -24,7 +24,15 @@ function App() {
 
   useEffect(() => {
     getTasksHelper(updateTasks);
-  }, [])
+  }, []);
+
+  useEffect(() => {
+    let navbar = document.getElementById('navbar');
+    if (navbar == null) {
+      return;
+    }
+    navbar.style.zIndex = dimmed ? "4" : "1";
+  }, {dimmed});
 
   const add_function = (taskName, taskContent) => {
     addTaskHelper(updateTasks, {'task_name': taskName, 'task_content': taskContent});

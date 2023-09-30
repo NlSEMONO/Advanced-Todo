@@ -10,6 +10,15 @@ export const Modal = () => {
 
     useEffect(() => {
         setEditing(settings['editing']);
+        const body = document.body;
+        const html = document.documentElement;
+        if (settings['open']) {
+            let shade = document.getElementById("shade");
+            let height = Math.max(body.scrollHeight, body.offsetHeight,
+                html.clientHeight, html.scrollHeight, html.offsetHeight);
+            console.log(height);
+            shade.style.height = `${height}px`;
+        }
     }, [settings]);
 
     const view_objects = [];
