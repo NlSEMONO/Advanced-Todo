@@ -66,6 +66,7 @@ p {
     top: 0px;
     background-color: #5E9FD5;
     height: 90px;
+    z-index: 4;
 }
 
 #navbar-pages {
